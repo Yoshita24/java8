@@ -142,5 +142,9 @@ public class StreamDemo {
         Set<String> cities=employeeList1.stream().flatMap(emp->emp.city.stream()).collect(Collectors.toSet());
         System.out.println("**IMP cities : "+cities);
 
+        int sumUsingParallelStream = numbers.parallelStream()
+                .mapToInt(Integer::intValue)
+                .sum();
+        System.out.println("sumUsingParallelStream: " + sumUsingParallelStream);
     }
 }
