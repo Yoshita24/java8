@@ -44,6 +44,12 @@ public class StreamDemo {
       List<Employee> employeeListSortedBySalary = employeeList.stream().sorted((o1, o2) -> o1.salary - o2.salary).collect(Collectors.toList());
       System.out.println("**IMP EmployeeListSortedBySalary :"+employeeListSortedBySalary);
 
+      String input="deven";
+       Character firstNonRepeatedCharacterInString=     input.chars().mapToObj(c->(char)c)
+                    .filter(c->input.indexOf(c)==input.indexOf(c)).findFirst().orElse(null);
+        System.out.println("**IMP firstNonRepeatedCharacterInString :"+firstNonRepeatedCharacterInString);
+
+
 
     }
 }
