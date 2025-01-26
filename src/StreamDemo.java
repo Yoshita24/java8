@@ -159,5 +159,10 @@ public class StreamDemo {
                 .collect(Collectors.toList());
 
         System.out.println("Common Elements From 2 list of Integers : " + commonElements);
+
+        List<Employee> employeeSortedAlphabeticBasedOnEmployeeName = employeeList.stream()
+                .sorted((e1, e2) -> e1.name.compareTo(e2.name)).collect(Collectors.toList());
+        System.out.println("***IMP employeeSortedAlphabeticBasedOnEmployeeName : " + employeeSortedAlphabeticBasedOnEmployeeName);
+
     }
 }
