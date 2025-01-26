@@ -34,11 +34,13 @@ public class StreamDemo {
       String StringListContentJoined = stringList.stream().collect(Collectors.joining(","));
       System.out.println("**IMP StringListContentJoined : "+StringListContentJoined);
 
-      List<Employee> employeeList=Arrays.asList(
-              new Employee("Deven",1000,"IT"),
-              new Employee("Rudresh",2000,"IT"),
-              new Employee("Yash",1500,"IT")
-      );
+        List<Employee> employeeList=Arrays.asList(
+                new Employee("Deven",1000,"IT",17,Arrays.asList("Mumbai","Singapore")),
+                new Employee("Rudresh",2000,"COMP",20,Arrays.asList("Mumbai","Kolkata")),
+                new Employee("Rudresh",4000,"COMP",20,Arrays.asList("Pune")),
+                new Employee("Yash",1500,"IT",18,Arrays.asList("Mumbai","France")),
+                new Employee("Ramesh",1500,"COMP",19,Arrays.asList("Mumbai"))
+        );
       List<Employee> employeeListSortedBySalary = employeeList.stream().sorted((o1, o2) -> o1.salary - o2.salary).collect(Collectors.toList());
       System.out.println("**IMP EmployeeListSortedBySalary : "+employeeListSortedBySalary);
 
@@ -95,14 +97,9 @@ public class StreamDemo {
        boolean checkIfNumbersInListAreGreaterThan15= numbers.stream().allMatch(n->n>15);
         System.out.println("**checkIfNumbersInListAreGreaterThan15 : "+checkIfNumbersInListAreGreaterThan15);
 
-        List<Employee> employeeList1=Arrays.asList(
-                new Employee("Deven",1000,"IT"),
-                new Employee("Rudresh",2000,"COMP"),
-                new Employee("Yash",1500,"IT"),
-                new Employee("Ramesh",1500,"COMP")
-        );
+
      System.out.println("**IMP groupedByDepartment");
-    Map<String,List<Employee>> groupedByDepartment = employeeList1.stream().collect(Collectors.groupingBy(emp->emp.department));
+    Map<String,List<Employee>> groupedByDepartment = employeeList.stream().collect(Collectors.groupingBy(emp->emp.department));
         groupedByDepartment.forEach((department,employeelists)->
         {
             System.out.println("for Department : "+department+" Employee list : "+employeelists);
@@ -131,6 +128,19 @@ public class StreamDemo {
         Set<Integer> duplicatesfromList = numbers.stream().filter(n -> Collections.frequency(numbers, n) > 1).collect(Collectors.toSet());
         System.out.println("**IMP duplicatesfromList : "+duplicatesfromList);
 
+        List<Employee> secondAndThirdHighestAgedEmployee = employeeList.stream().sorted((e1, e2) -> e1.age - e2.age).skip(1).limit(2).collect(Collectors.toList());
+        System.out.println("**IMP secondAndThirdHighestAgedEmployee : "+secondAndThirdHighestAgedEmployee);
+
+        int [] intnumbers ={5,2,8,3,1,1};
+       int secondHighestNumberFromIntArray = Arrays.stream(intnumbers).sorted().distinct().skip(1).limit(1).findFirst().getAsInt();
+        System.out.println("**IMP secondHighestNumberFromIntArray : "+secondHighestNumberFromIntArray);
+        List<Employee> employeeList1=Arrays.asList(
+
+                new Employee("Rudresh",2000,"COMP",20,Arrays.asList("Mumbai","Kolkata")),
+                new Employee("Rudresh",4000,"COMP",20,Arrays.asList("Pune"))
+        );
+        Set<String> cities=employeeList1.stream().flatMap(emp->emp.city.stream()).collect(Collectors.toSet());
+        System.out.println("**IMP cities : "+cities);
 
     }
 }

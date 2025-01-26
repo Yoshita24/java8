@@ -1,12 +1,18 @@
+import java.util.List;
+
 public class Employee {
     String name;
     int salary;
     String department;
+    int age;
+    List<String> city;
 
-    public Employee(String name, int salary, String department) {
+    public Employee(String name, int salary, String department, int age, List<String> city) {
         this.name = name;
         this.salary = salary;
         this.department = department;
+        this.age = age;
+        this.city = city;
     }
 
     @Override
@@ -15,6 +21,8 @@ public class Employee {
                 "name='" + name + '\'' +
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
+                ", age=" + age +
+                ", city='" + city + '\'' +
                 '}';
     }
 }
