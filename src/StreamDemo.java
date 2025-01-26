@@ -1,5 +1,7 @@
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamDemo {
@@ -163,6 +165,38 @@ public class StreamDemo {
         List<Employee> employeeSortedAlphabeticBasedOnEmployeeName = employeeList.stream()
                 .sorted((e1, e2) -> e1.name.compareTo(e2.name)).collect(Collectors.toList());
         System.out.println("***IMP employeeSortedAlphabeticBasedOnEmployeeName : " + employeeSortedAlphabeticBasedOnEmployeeName);
+
+        Set<String> stringSet = new HashSet<>();
+      Set<String> duplicateElementFromListOfString=  stringList.stream().filter(x-> !stringSet.add(x)).collect(Collectors.toSet());
+      System.out.println("duplicateElementFromListOfString : "+duplicateElementFromListOfString);
+
+        Map<String, Long> stringWithCountFromList = stringList.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println("**IMP stringWithCountFromList : "+stringWithCountFromList);
+
+        Set<String> setWithDuplicateStringInList=stringWithCountFromList
+                .entrySet().stream().filter(entry->entry.getValue()>1)
+                .map(entry->entry.getKey())
+                .collect(Collectors.toSet());
+        System.out.println("**IMP setWithDuplicateStringInList : "+setWithDuplicateStringInList);
+
+        int[] numarray={1,2,3,4,5};
+        IntStream.range(0,numarray.length/2).
+                forEach(
+                        i->
+                        {
+                            int temp=numarray[i];
+                            numarray[i]=numarray[numarray.length-i-1];
+                            numarray[numarray.length-i-1]=temp;
+                        }
+                );
+        System.out.println("***IMP Reversed Array in place : "+Arrays.toString(numarray));
+
+        List<String> removeDuplicateFromList = stringList.stream().distinct().collect(Collectors.toList());
+        System.out.println("***IMP removeDuplicateFromList : "+removeDuplicateFromList);
+
+         IntSummaryStatistics value = numbers.stream().collect(Collectors.summarizingInt(Integer::intValue));
+        System.out.println("Using IntSummaryStatistics Max Value " +value.getMax());
+        System.out.println("Using IntSummaryStatistics Min Value " +value.getMin());
 
     }
 }
