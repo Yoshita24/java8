@@ -1,10 +1,12 @@
 public class Employee {
     String name;
     int salary;
+    String department;
 
-    public Employee(String name, int salary) {
+    public Employee(String name, int salary, String department) {
         this.name = name;
         this.salary = salary;
+        this.department = department;
     }
 
     @Override
@@ -12,6 +14,7 @@ public class Employee {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", salary=" + salary +
+                ", department='" + department + '\'' +
                 '}';
     }
 }
