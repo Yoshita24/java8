@@ -146,5 +146,18 @@ public class StreamDemo {
                 .mapToInt(Integer::intValue)
                 .sum();
         System.out.println("sumUsingParallelStream: " + sumUsingParallelStream);
+        Integer[] array1 = {1, 2, 3, 4, 5};
+        Integer[] array2 = {3, 4, 5, 6, 7};
+
+        // Convert arrays to lists
+        List<Integer> list3 = Arrays.asList(array1);
+        List<Integer> list4 = Arrays.asList(array2);
+
+        // Find common elements
+        List<Integer> commonElements = list3.stream()
+                .filter(list4::contains)
+                .collect(Collectors.toList());
+
+        System.out.println("Common Elements From 2 list of Integers : " + commonElements);
     }
 }
