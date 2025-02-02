@@ -27,4 +27,17 @@ public class FutureCancelledExample {
 /*
 Returns true if cancel() was called before completion.
 If false, the task either completed normally or was never cancelled
+What happens if u call get() on canceled task
+If future task is canceled, calling future.get() will throw CancellationException
+try{
+System.out.println(future.get());
+}
+catch(Exception e)
+{
+System.out.print("Cannot retrive result: task was cancelled: ");
+}
+
+Use isDone() to check completion before calling get()
+Use cancel(true) to stop long running task(if needed)
+Use iscancelled() to confirm cancellation status
 * */
