@@ -24,3 +24,7 @@ public class FutureCancelledExample {
         }
     }
 }
+/*
+Returns true if cancel() was called before completion.
+If false, the task either completed normally or was never cancelled
+* */
