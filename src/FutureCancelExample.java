@@ -17,3 +17,9 @@ public class FutureCancelExample {
         executorService.shutdown();
     }
 }
+/*
+future.cancel(true) - Attempts to stop the task immediately (if running)
+future.cancel(false) - Allows task to finish, but prevents fetching the result
+returns true if cancellation was successful, otherwise false
+Once cancelled, get() will throw CancellationExample
+* */
