@@ -1,6 +1,12 @@
-//concept is to copy an existing object rather than creating new instance from scratch.
-//because creating new instance is costly
+/*concept is to copy an existing object rather than creating new instance from scratch.
+because creating new instance is costly
+avoid creating new instances from scratch
+faster than constructing object manually
+easily create multiple versions of object
+Prototype design pattern is creational pattern that allows cloning object without depending
+on their exact class. It is useful when object creation is expensive
 
+*/
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -81,5 +87,6 @@ class NetworkConnection implements Cloneable
             cloned.getDomain().add(s);
         }
         return cloned;
+       /*return new NetworkConnection(this.ip,this.importantData,this.domain);*/
     }
 }
