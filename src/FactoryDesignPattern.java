@@ -5,6 +5,8 @@ public class FactoryDesignPattern {
     Adv - focus on creating object for interface rather than implementation
     Loose coupling,more robust code
 
+    Depending on requirement u ll create class
+    We want to hide logic of object creation from user
     */
 }
 //parent type employeee .. so child would be type of that
