@@ -1,11 +1,8 @@
 package multithreading;
-
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
 public class BankAccount {
-
     private int balance = 100;
     private final Lock lock = new ReentrantLock();
     public  void withdraw(int amount) throws InterruptedException {
@@ -28,22 +25,11 @@ public class BankAccount {
             }
             else {
                 System.out.println(Thread.currentThread().getName()+" insufficient balance");
-
             }
         }
         else {
             System.out.println("could not acquire lock will try again later");
-
         }
-        /*if(balance>=amount)
-        {
-            System.out.println(Thread.currentThread().getName()+" proceeding with withdrawal");
-            Thread.sleep(3000);
-            balance -=amount;
-        }
-        else {
-            System.out.println(Thread.currentThread().getName()+" insufficient balance");
-        }*/
     }
 }
 class Mainn
@@ -64,6 +50,5 @@ class Mainn
         Thread t2 = new Thread(task,"Thread 2");
         t1.start();
         t2.start();
-
     }
 }
